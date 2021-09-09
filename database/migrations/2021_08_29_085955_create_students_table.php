@@ -44,7 +44,6 @@ class CreateStudentsTable extends Migration
             $table->string('account_number');
             $table->string('ifsc_code');
             $table->string('profile_photo');
-            $table->string('password');
             $table->timestamps();
         });
     }

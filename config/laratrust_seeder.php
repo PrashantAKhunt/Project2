@@ -31,7 +31,12 @@ return [
         ],
         'student' => [
             'profile' => 'r',
-        ]
+        ],
+        'branch' => [
+            'employee' => 'c,r,u,d',
+            'student' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
     ],
 
     'permissions_map' => [

@@ -82,14 +82,14 @@ class DashboardController extends Controller
                 $id = $user->branch_id;
             }
 
-            $trainers = Trainer::where('branch_id','=',$id)->get();
-            $counsellors = Counsellor::where('branch_id','=',$id)->get();
-            $mobilisers = Mobiliser::where('branch_id','=',$id)->get();
-            $receptionists = Receptionist::where('branch_id','=',$id)->get();
-            $peons = Peon::where('branch_id','=',$id)->get();
-            $managers = Manager::where('branch_id','=',$id)->get();
+            // $trainers = Trainer::where('branch_id','=',$id)->get();
+            // $counsellors = Counsellor::where('branch_id','=',$id)->get();
+            // $mobilisers = Mobiliser::where('branch_id','=',$id)->get();
+            // $receptionists = Receptionist::where('branch_id','=',$id)->get();
+            // $peons = Peon::where('branch_id','=',$id)->get();
+            // $managers = Manager::where('branch_id','=',$id)->get();
             $students = Student::where('branch_id','=',$id)->get();
-            return view('branch.branchdetails',compact(['trainers','counsellors','mobilisers','receptionists','peons','managers','students','id']));
+            return view('employeedashboard',compact(['students','id']));
         }elseif(Auth::user()->hasRole('student'))
         {
             

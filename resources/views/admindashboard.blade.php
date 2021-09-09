@@ -21,12 +21,14 @@
                             <th scope="col">Admin name</th>
                             <th scope="col">Address</th>
                             <th scope="col">Action</th>
+                            <th></th>
                         </tr>
                     </thead>
                         <tbody>
+                            <?php $a=1; ?>
                             @foreach($branches as $branch)        
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row"><?php echo $a++; ?></th>
                                 <td>{{$branch->name}}</td>
                                 <td>{{$branch->email}}</td>
                                 <td>{{$branch->contact_no}}</td>
@@ -39,6 +41,8 @@
                                         <input type="submit" name="submit" value="view">
                                     </form>
                                 </td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editBranch/{{$branch->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteBranch/{{$branch->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>

@@ -31,6 +31,8 @@
                                 <th scope="col">Qualification</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Profile Photo</th>
+                                <th></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +47,8 @@
                                 <td>{{$manager->qualification}}</td>
                                 <td>{{$manager->address}}</td>
                                 <td><img style="width: 100px; hight: 100px;" src="{{$manager->profile_photo}}" alt="..." class="img-thumbnail"></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editManager/{{$manager->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteManager/{{$manager->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>
@@ -74,6 +78,8 @@
                             <th scope="col">Qualification</th>
                             <th scope="col">Address</th>
                             <th scope="col">Profile Photo</th>
+                            <th></th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                         <tbody>
@@ -89,7 +95,9 @@
                                 <td>{{$trainer->qualification}}</td>
                                 <td>{{$trainer->address}}</td>
                                 <td><img style="width: 100px; hight: 100px;" src="{{$trainer->profile_photo}}" alt="..." class="img-thumbnail"></td>
-                            </tr>    
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editTrainer/{{$trainer->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteTrainer/{{$trainer->id}}">Delete</a></td>
+                            </tr> 
                             @endforeach
                         </tbody>
                     </table>
@@ -116,6 +124,8 @@
                                 <th scope="col">Qualification</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Profile Photo</th>
+                                <th></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,6 +140,8 @@
                                 <td>{{$counsellor->qualification}}</td>
                                 <td>{{$counsellor->address}}</td>
                                 <td><img style="width: 100px; hight: 100px;" src="{{$counsellor->profile_photo}}" alt="..." class="img-thumbnail"></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editCounsellor/{{$counsellor->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteCounsellor/{{$counsellor->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>
@@ -157,6 +169,8 @@
                                 <th scope="col">Qualification</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Profile Photo</th>
+                                <th></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -171,6 +185,8 @@
                                 <td>{{$mobiliser->qualification}}</td>
                                 <td>{{$mobiliser->address}}</td>
                                 <td><img style="width: 100px; hight: 100px;" src="{{$mobiliser->profile_photo}}" alt="..." class="img-thumbnail"></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editMobiliser/{{$mobiliser->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteMobiliser/{{$mobiliser->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>
@@ -198,6 +214,8 @@
                                 <th scope="col">Qualification</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Profile Photo</th>
+                                <th></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -212,6 +230,8 @@
                                 <td>{{$receptionist->qualification}}</td>
                                 <td>{{$receptionist->address}}</td>
                                 <td><img style="width: 100px; hight: 100px;" src="{{$receptionist->profile_photo}}" alt="..." class="img-thumbnail"></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editReceptionist/{{$receptionist->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteReceptionist/{{$receptionist->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>
@@ -238,6 +258,8 @@
                                 <th scope="col">Aadhar no</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Profile Photo</th>
+                                <th></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -251,6 +273,8 @@
                                 <td>{{$peon->aadhar_no}}</td>
                                 <td>{{$peon->address}}</td>
                                 <td><img style="width: 100px; hight: 100px;" src="{{$peon->profile_photo}}" alt="..." class="img-thumbnail"></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editPeon/{{$peon->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deletePeon/{{$peon->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>
@@ -278,6 +302,7 @@
                                 <th scope="col">Address</th>
                                 <th scope="col">Profile Photo</th>
                                 <th scope="col">Action</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -298,6 +323,8 @@
                                         <input type="submit" name="submit" value="view">
                                     </form>
                                 </td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/editStudent/{{$student->id}}">Edit</a></td>
+                                <td><a href="/{{Auth::user()->roles[0]['name']}}/deleteStudent/{{$student->id}}">Delete</a></td>
                             </tr>    
                             @endforeach
                         </tbody>

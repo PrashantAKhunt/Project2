@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add Employee') }}
+            {{ __('Update Manager') }}
         </h2>
     </x-slot>
     <x-auth-card>
@@ -11,35 +11,74 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('employee.register') }}">
+        <form method="POST" action="/{{Auth::user()->roles[0]['name']}}/editManager/" enctype="multipart/form-data">
             @csrf
 
+            <input type="hidden" name="id" value="{{$manager->id}}"/>
+            <input type="hidden" name="Oemail" value="{{$manager->email}}"/>
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{$manager->name}}" required autofocus />
             </div>
+
 
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{$manager->email}}" required />
             </div>
+            <br>
 
-            <div class="mt-4">
-                <x-label for="role_id" :value="__('Register as:')" />
-
-                <select name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200
-                focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="admin">Admin</option>
-                    <option value="manager">Manager</option>
-                    <option value="employee">Employee</option>
-                    <option value="student">Student</option>
+            <!-- select branch -->
+            <div>
+            
+                <x-label for="Select Branch" :value="__('Select Branch')" />
+                <select class="form-select" aria-label="Default select example" name="branch_id" >
+                    
+                        @foreach($branches as $branch)
+                            @if(($manager->branch_id)==$branch->id)
+                            <option value="{{$branch->id}}" selected>{{$branch->name}}</option>
+                            @else
+                            <option value="{{$branch->id}}">{{$branch->name}}</option>
+                            @endif
+                        @endforeach
                 </select>
             </div>
+            <br>
 
+            <!-- Profile Photo -->
+            <div>
+            <img style="width: 100px; hight: 100px;" src="{{$manager->profile_photo}}" alt="..." class="img-thumbnail">
+                <x-label for="Profile Photo" :value="__('Profile Photo')" />
+                <input type="file" name="photo"/>
+            </div>
+            <br>
+
+            <!-- contact number -->
+            <div>
+                <x-label for="Contact number" :value="__('Contact number')" />
+                <x-input id="name" class="block mt-1 w-full" type="number" name="contact_number" value="{{$manager->contact_no}}" required autofocus />
+            </div>
+            <br>
+            <!-- Aadhar Number -->
+            <div>
+                <x-label for="Aadhar number" :value="__('Aadhar number')" />
+                <x-input id="name" class="block mt-1 w-full" type="number" name="aadhar_number" value="{{$manager->aadhar_no}}" required autofocus />
+            </div>
+            <br>
+            <!-- Qualification -->
+            <div>
+                <x-label for="Qualification" :value="__('Qualification')" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="qualification" value="{{$manager->qualification}}" required autofocus />
+            </div>
+            <br>
+            <!-- Address -->
+            <div>
+                <x-label for="Address" :value="__('Address')" />
+                <textarea id="name" class="block mt-1 w-full" type="textarea" name="address" required autofocus >{{$manager->address}}</textarea>
+            </div>
+            
             
             <!-- Password -->
             <div class="mt-4">
@@ -97,12 +136,8 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Update Manager') }}
                 </x-button>
             </div>
         </form>

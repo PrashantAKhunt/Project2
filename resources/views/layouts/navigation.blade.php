@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <x-application-logo class="block h-3 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
@@ -46,11 +46,28 @@
                             <x-nav-link :href="route('employee.admin.addpeon')" :active="request()->routeIs('employee.admin.addpeon')">
                                 {{ __('Peon') }}
                             </x-nav-link>
-                        </x-slot>
 
-                        
+                            <x-nav-link :href="route('employee.admin.addmanager')" :active="request()->routeIs('employee.admin.addmanager')">
+                                {{ __('Manager') }}
+                            </x-nav-link>
+
+                        </x-slot>
                     </x-dropdown>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('employee.admin.addbranch')" :active="request()->routeIs('employee.admin.addbranch')">
+                        {{ __('Add Branch') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('employee.admin.addstudent')" :active="request()->routeIs('employee.admin.addstudent')">
+                        {{ __('Add Student') }}
+                    </x-nav-link>
+                </div>
+
+                
                 @endif
 
                 @if (Auth::user()->hasRole('manager'))
@@ -95,34 +112,7 @@
                 </div>
                 @endif
 
-                @if (Auth::user()->hasRole('admin'))
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <x-dropdown width="48">
-                        <x-slot name="trigger">
-                            {{ __('Add Branch') }}
-                        </x-slot>
-
-
-                        <x-slot name="content">
-                            <x-nav-link :href="route('employee.admin.addbranch')" :active="request()->routeIs('employee.admin.addbranch')">
-                                {{ __('Add Branch') }}
-                            </x-nav-link>
-
-                            <x-nav-link :href="route('employee.admin.addmanager')" :active="request()->routeIs('employee.admin.addmanager')">
-                                {{ __('Add Manager') }}
-                            </x-nav-link>
-
-                        </x-slot>
-
-                        
-                    </x-dropdown>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('employee.admin.addstudent')" :active="request()->routeIs('employee.admin.addstudent')">
-                        {{ __('Add Student') }}
-                    </x-nav-link>
-                </div>
-                @endif
+                
 
                 @if (Auth::user()->hasRole('branch'))
                 
@@ -134,24 +124,28 @@
 
                     
                         <x-slot name="content">
-                            <x-nav-link :href="route('employee.branch.addtrainer')" :active="request()->routeIs('employee.admin.addtrainer')">
+                            <x-nav-link :href="route('employee.branch.addtrainer')" :active="request()->routeIs('employee.branch.addtrainer')">
                                 {{ __('Trainer') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('employee.branch.addcounsellor')" :active="request()->routeIs('employee.admin.addcounsellor')">
+                            <x-nav-link :href="route('employee.branch.addcounsellor')" :active="request()->routeIs('employee.branch.addcounsellor')">
                                 {{ __('Counsellor') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('employee.branch.addreceptionist')" :active="request()->routeIs('employee.admin.addreceptionist')">
+                            <x-nav-link :href="route('employee.branch.addreceptionist')" :active="request()->routeIs('employee.branch.addreceptionist')">
                                 {{ __('Receptionist') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('employee.branch.addmobiliser')" :active="request()->routeIs('employee.admin.addmobiliser')">
+                            <x-nav-link :href="route('employee.branch.addmobiliser')" :active="request()->routeIs('employee.branch.addmobiliser')">
                                 {{ __('Mobiliser') }}
                             </x-nav-link>
 
-                            <x-nav-link :href="route('employee.branch.addpeon')" :active="request()->routeIs('employee.admin.addpeon')">
+                            <x-nav-link :href="route('employee.branch.addpeon')" :active="request()->routeIs('employee.branch.addpeon')">
                                 {{ __('Peon') }}
+                            </x-nav-link>
+
+                            <x-nav-link :href="route('employee.branch.addmanager')" :active="request()->routeIs('employee.branch.addmanager')">
+                                {{ __('Manager') }}
                             </x-nav-link>
                         </x-slot>
 
@@ -166,14 +160,7 @@
                 </div>
                 @endif
 
-                @if (Auth::user()->hasRole('employee'))
                 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('employee.employee.addstudent')" :active="request()->routeIs('employee.employee.addstudent')">
-                        {{ __('Add Student') }}
-                    </x-nav-link>
-                </div>
-                @endif
 
             </div>
 

@@ -43,7 +43,7 @@
                 <x-label for="Qualification" :value="__('Address')" />
                 <textarea id="name" class="block mt-1 w-full" type="textarea" name="address" required autofocus ></textarea>
             </div>
-            <br>
+            
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
@@ -52,6 +52,24 @@
                                 type="password"
                                 name="password"
                                 required autocomplete="new-password" />
+                <span>
+                    <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"> </i>
+                </span>
+                <script>
+                    var state=true;
+                    function toggle(){
+                        if(state){
+                            document.getElementById("password")
+                            .setAttribute("type","text");
+                            state=false;
+                        }
+                        else{
+                            document.getElementById("password")
+                            .setAttribute("type","password");
+                            state=true;
+                        }
+                    }
+                </script>
             </div>
             <br>
             <!-- Confirm Password -->
@@ -61,6 +79,24 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
+                <span>
+                    <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle1()"> </i>
+                </span>
+                <script>
+                    var state=true;
+                    function toggle1(){
+                        if(state){
+                            document.getElementById("password_confirmation")
+                            .setAttribute("type","text");
+                            state=false;
+                        }
+                        else{
+                            document.getElementById("password_confirmation")
+                            .setAttribute("type","password");
+                            state=true;
+                        }
+                    }
+                </script>
             </div>
 
             <div class="flex items-center justify-end mt-4">

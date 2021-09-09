@@ -74,7 +74,7 @@
                         </tr>
 
                         <tr>
-                            <td>Email/td>
+                            <td>Email</td>
                             <td>{{$student->email}}</td>
                         </tr>
 

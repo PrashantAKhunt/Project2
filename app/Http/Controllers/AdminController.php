@@ -195,7 +195,7 @@ class AdminController extends Controller
         $request->validate([
             
             'name' => 'required|string|max:255',
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'enroll_for' => 'required|string|max:255',
@@ -232,13 +232,13 @@ class AdminController extends Controller
         ]);
         
         $user->attachRole(3);
-        return view('employee.addtrainer');   
+        return redirect()->route('dashboard');   
     }
 
     public function storecounsellor(Request $request)
     {
         $request->validate([
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -275,13 +275,13 @@ class AdminController extends Controller
         ]);
       
         $user->attachRole(3);
-        return view('employee.addcounsellor');   
+        return redirect()->route('dashboard');   
     }
 
     public function storemobiliser(Request $request)
     {
         $request->validate([
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -324,7 +324,7 @@ class AdminController extends Controller
     public function storereceptionist(Request $request)
     {
         $request->validate([
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -361,13 +361,13 @@ class AdminController extends Controller
         ]);
       
         $user->attachRole(3);
-        return view('employee.addreceptionist');   
+        return redirect()->route('dashboard');   
     }
 
     public function storepeon(Request $request)
     {
         $request->validate([
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'contact_number' => 'required|digits:10',
@@ -428,7 +428,7 @@ class AdminController extends Controller
     public function storemanager(Request $request)
     {
         $request->validate([
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -471,7 +471,7 @@ class AdminController extends Controller
     public function storestudent(Request $request)
     {
         $request->validate([
-            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
             'enroll_for'=> 'required|string|max:255',
             'first_name'=> 'required|string|max:255',
             'last_name'=> 'required|string|max:255',
@@ -486,19 +486,18 @@ class AdminController extends Controller
             'email'=> 'required|string|email|max:255|unique:users',
             'tehasil'=> 'required|string|max:255',
             'dob'=> 'required|string|max:255',
-            'contact_number'=> 'required|string|max:255',
+            'contact_number' => 'required|digits:10',
             'cast'=> 'required|string|max:255',
             'categories'=> 'required|string|max:255',
             'birth_place'=> 'required|string|max:255',
             'disability'=> 'required|string|max:255',
-            'aadhar_number'=> 'required|string|max:255',
+            'aadhar_number' => 'required|digits:12',
             'document_proof'=> 'required|string|max:255',
             'account_name'=> 'required|string|max:255',
             'bank_name'=> 'required|string|max:255',
             'bank_branch'=> 'required|string|max:255',
             'account_number'=> 'required|string|max:255',
             'ifsc_code'=> 'required|string|max:255',
-            'password'=> ['required', 'confirmed', Rules\Password::defaults()],
             
         ]);
 
@@ -537,17 +536,8 @@ class AdminController extends Controller
             'account_number'=> $request->account_number,
             'ifsc_code'=> $request->ifsc_code,
             'profile_photo'=>$uploadedFileUrl,
-            'password'=> Hash::make($request->password),
         ]);
 
-        $user = User::create([
-            'name' => $request->first_name,
-            'email' => $request->email,
-            'branch_id'=>$request->branch_id,
-            'password' => Hash::make($request->password),
-        ]);
-        
-        $user->attachRole(4);
         return redirect()->route('dashboard');
     }
 

@@ -39,7 +39,6 @@ class Student extends Model
         'account_number',
         'ifsc_code',
         'profile_photo',
-        'password',
     ];
 
 }
